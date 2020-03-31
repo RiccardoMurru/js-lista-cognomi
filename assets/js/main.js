@@ -12,6 +12,8 @@ var btnEnter = document.getElementById('btn-enter');
 var btnGenerateList = document.getElementById('btn-genera-lista');
 var listElement = document.getElementById('user-list');
 var position = document.getElementById('position');
+var newNamePosition;
+var positionText = document.getElementById('position-text');
 
 
 // 1-2. Chiedere cognome e inserire nell'array
@@ -19,6 +21,7 @@ var position = document.getElementById('position');
 btnEnter.addEventListener('click',
     function() {
         users.push(surname.value);
+        newNamePosition = surname.value;
         surname.value = '';
     }
 );
@@ -30,10 +33,11 @@ btnGenerateList.addEventListener('click',
         for (var i = 0; i < users.length; i++) {
             var item = users.sort()[i];
             listElement.innerHTML +=  '<li>' + item + '</li>';
+            
         }
         
+        // 4. Scrivere in che posizione si trova il nuovo utente
+        positionText.className =  'visible';
+        position.innerHTML = users.indexOf(newNamePosition) + 1 + '°';
     }
 );
-
-// 4. Scrivere in che posizione si trova il nuovo utente
-
